@@ -35,10 +35,10 @@ English | [English](README.en.md)
 
 **设置页（设置 → 宝塔面板）**
 
-- 面板列表：添加、删除、选中编辑、「设为当前」
+- 面板列表：添加、删除、选中编辑、「设为当前」——**改动即时保存，没有保存按钮**（输入框停顿 0.45s 或失焦时写入）
 - 每台面板：显示名称、面板地址（含端口的根地址）、接口密钥（留空表示不改）、安全入口（可选）、校验证书
 - **显示到侧边栏**开关
-- 保存后通过 DSH 的 `configEditor` 写入 profile 的 `cordis.patch.yml`，不是自己改文件
+- 面板列表存在插件自己的状态文件 `~/.dsh/baota-panel/state.json`（原子写入、不重启插件、不触发整页刷新）；`showInSidebar` 也在里面，改完刷新页面生效
 
 **智能体工具**
 
@@ -54,6 +54,7 @@ English | [English](README.en.md)
 | `bt_service` | 服务列表、重启 |
 | `bt_logs` | 面板操作日志（谁在什么时候做了什么） |
 | `bt_config` | 面板增删改、切换当前面板、侧边栏开关 |
+| `bt_selftest` | 诊断：按浏览器同一条 Remote 网关链路跑 config/overview/写/增删改整圈 |
 | `bt_api` | 兜底：直接调用任意面板 API 动作 |
 
 除 `bt_panels` / `bt_config` 外，每个工具都接受 `panel` 参数选中目标面板。
@@ -74,6 +75,7 @@ git clone <this repo> dsh-baota-panel
 ## 配置
 
 ```yaml
+# 面板列表由插件自己保存，这里的 panels 只在首次安装时作为种子
 - id: dsh-baota-panel
   name: dsh-baota-panel
   config:

@@ -21,9 +21,9 @@ The sidebar entry registers into `sidebar.panellist` (id `baota`), the dashboard
 
 **Sidebar dashboard** — CPU, memory, load, live network throughput, disk usage, websites, databases, installed services (nginx / MySQL / PHP). One refresh button; a failing source reports its own error instead of blanking the page.
 
-**Settings → Baota panel** — add, remove, edit and activate panels; per-panel display name, address, API key (empty keeps the stored key), optional security entrance and certificate verification; plus the **show in sidebar** switch. Saves write through DSH's `configEditor`.
+**Settings → Baota panel** — add, remove, edit and activate panels with **auto-save** (no save button: writes land 0.45s after typing stops or on blur); per-panel display name, address, API key (empty keeps the stored key), optional security entrance and certificate verification; plus the **show in sidebar** switch. The list is stored in the plugin's own state file `~/.dsh/baota-panel/state.json` (atomic write, no plugin restart), so edits apply without a page reload.
 
-**Agent tools** — `bt_panels`, `bt_system`, `bt_site` (list/start/stop/delete/logs), `bt_database`, `bt_file`, `bt_crontab`, `bt_firewall`, `bt_service`, `bt_logs`, `bt_config`, and `bt_api` for any panel action not covered. All but `bt_panels`/`bt_config` accept `panel`.
+**Agent tools** — `bt_panels`, `bt_system`, `bt_site` (list/start/stop/delete/logs), `bt_database`, `bt_file`, `bt_crontab`, `bt_firewall`, `bt_service`, `bt_logs`, `bt_config`, `bt_selftest` (diagnostic: drives the same Remote gateway path the UI uses), and `bt_api` for any panel action not covered. All but `bt_panels`/`bt_config` accept `panel`.
 
 ## Install
 
