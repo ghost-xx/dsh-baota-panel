@@ -21,7 +21,7 @@ The sidebar entry registers into `sidebar.panellist` (id `baota`), the dashboard
 
 **Settings → Baota panel** — panel address, API key, optional security entrance, **show in sidebar** switch, certificate verification, and a save button that writes through DSH's `configEditor` (never by editing `cordis.patch.yml` by hand).
 
-**Agent tools** — `bt_system`, `bt_site`, `bt_database`, `bt_file`, `bt_crontab`, `bt_firewall`, `bt_service`, `bt_logs`, `bt_config`, plus `bt_api` for any panel action not covered.
+**Agent tools** — `bt_system`, `bt_site` (list/start/stop/delete/logs), `bt_database`, `bt_file`, `bt_crontab`, `bt_firewall`, `bt_service`, `bt_logs`, `bt_config`, plus `bt_api` for any panel action not covered.
 
 ## Install
 
