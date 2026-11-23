@@ -17,17 +17,19 @@ The sidebar entry registers into `sidebar.panellist` (id `baota`), the dashboard
 
 ## Features
 
+**Several panels** — every panel has its own address, API key, security entrance and TLS policy. Pick one as current; the dashboard switches between them, and every tool takes an optional `panel` argument (id or name). `bt_panels` lists them all.
+
 **Sidebar dashboard** — CPU, memory, load, live network throughput, disk usage, websites, databases, installed services (nginx / MySQL / PHP). One refresh button; a failing source reports its own error instead of blanking the page.
 
-**Settings → Baota panel** — panel address, API key, optional security entrance, **show in sidebar** switch, certificate verification, and a save button that writes through DSH's `configEditor` (never by editing `cordis.patch.yml` by hand).
+**Settings → Baota panel** — add, remove, edit and activate panels; per-panel display name, address, API key (empty keeps the stored key), optional security entrance and certificate verification; plus the **show in sidebar** switch. Saves write through DSH's `configEditor`.
 
-**Agent tools** — `bt_system`, `bt_site` (list/start/stop/delete/logs), `bt_database`, `bt_file`, `bt_crontab`, `bt_firewall`, `bt_service`, `bt_logs`, `bt_config`, plus `bt_api` for any panel action not covered.
+**Agent tools** — `bt_panels`, `bt_system`, `bt_site` (list/start/stop/delete/logs), `bt_database`, `bt_file`, `bt_crontab`, `bt_firewall`, `bt_service`, `bt_logs`, `bt_config`, and `bt_api` for any panel action not covered. All but `bt_panels`/`bt_config` accept `panel`.
 
 ## Install
 
 1. In DSH open **Plugins → Add plugin** and pick this directory.
-2. Open **Settings → Baota panel**, enter the panel address and API key, save.
-3. The sidebar shows the 宝塔面板 entry; turn **Show in sidebar** off to hide it without losing the tools.
+2. Open **Settings → Baota panel**, press **Add panel**, fill the address and API key, press **Use as current**, then **Save**. Repeat for more panels.
+3. The sidebar shows the 宝塔面板 entry with a panel switcher; turn **Show in sidebar** off to hide it without losing the tools.
 
 ## Configure
 
@@ -35,10 +37,19 @@ The sidebar entry registers into `sidebar.panellist` (id `baota`), the dashboard
 - id: dsh-baota-panel
   name: dsh-baota-panel
   config:
-    panelUrl: 'https://panel.example.com:4439'   # panel root with port, no security entrance
-    apiKey: 'your-api-key'                        # 面板设置 → API 接口 → 接口密钥
-    securityEntrance: ''                          # optional, e.g. ghostxx
-    verifyTls: false                              # the panel is self-signed by default
+    panels:
+      - id: main
+        name: Main
+        panelUrl: 'https://panel.example.com:4439'   # root with port, no security entrance
+        apiKey: 'your-api-key'
+        securityEntrance: ''
+        verifyTls: false
+      - id: backup
+        name: Backup
+        panelUrl: 'https://203.0.113.10:8888'
+        apiKey: 'another-key'
+        verifyTls: false
+    activePanel: main
     showInSidebar: true
     requestTimeoutMs: 20000
 ```

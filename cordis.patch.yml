@@ -1,20 +1,14 @@
 # The single row this bundle inserts. `config` is read by lib/index.js at apply
-# time; the settings page also writes these values through the Host configEditor
-# (never by hand-editing this file).
+# time; 设置 → 宝塔面板 writes the panel list and the sidebar switch through the
+# Host configEditor (never by hand-editing this file).
+#
+# Several panels are supported: `panels` is a list, each with its own address and
+# API key, and every tool takes an optional `panel` argument (id or name).
 - insert:
     - id: dsh-baota-panel
       name: dsh-baota-panel
       config:
-        # Panel root address with its port, for example https://panel.example.com:4439
-        # Do not append the security entrance: the API is served at the root.
-        panelUrl: ''
-        # 面板设置 → API 接口 → 接口密钥
-        apiKey: ''
-        # Optional: the panel's 安全入口 (for example ghostxx). Used only as a
-        # Referer path for routes such as firewall/logs that check it.
-        securityEntrance: ''
-        # The panel serves a self-signed certificate by default.
-        verifyTls: false
-        # Whether the 宝塔面板 entry appears in the sidebar panel list.
+        panels: []
+        activePanel: ''
         showInSidebar: true
         requestTimeoutMs: 20000

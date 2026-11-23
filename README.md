@@ -19,6 +19,12 @@ English | [English](README.en.md)
 
 ## 功能
 
+**多台面板**
+
+- 面板列表：每台面板有自己的地址、接口密钥、安全入口和证书策略，可在设置页增删
+- 任意一台设为「当前面板」，侧边栏看板顶部有切换下拉
+- 所有工具都带可选 `panel` 参数（面板 id 或名称），留空用当前面板；`bt_panels` 列出全部
+
 **侧边栏看板**
 
 - CPU 使用率（含核数）、内存占用、系统负载、实时网络吞吐
@@ -29,17 +35,16 @@ English | [English](README.en.md)
 
 **设置页（设置 → 宝塔面板）**
 
-- 面板地址（含端口的根地址）
-- 接口密钥（留空表示不修改）
-- 安全入口（可选，仅部分路由校验时需要）
+- 面板列表：添加、删除、选中编辑、「设为当前」
+- 每台面板：显示名称、面板地址（含端口的根地址）、接口密钥（留空表示不改）、安全入口（可选）、校验证书
 - **显示到侧边栏**开关
-- 校验面板证书开关
 - 保存后通过 DSH 的 `configEditor` 写入 profile 的 `cordis.patch.yml`，不是自己改文件
 
 **智能体工具**
 
 | 工具 | 能力 |
 | --- | --- |
+| `bt_panels` | 列出已配置的面板（id、名称、主机、是否配齐） |
 | `bt_system` | 概览 / 磁盘 / 负载 / 网络 / 面板软件栈 / 原始系统信息 |
 | `bt_site` | 网站列表、启动、停止、删除、读站点访问日志 |
 | `bt_database` | 数据库列表、删除 |
@@ -48,14 +53,16 @@ English | [English](README.en.md)
 | `bt_firewall` | 防火墙规则列表、放行端口、关闭端口 |
 | `bt_service` | 服务列表、重启 |
 | `bt_logs` | 面板操作日志（谁在什么时候做了什么） |
-| `bt_config` | 读取/修改本插件配置（面板地址、密钥、侧边栏开关） |
+| `bt_config` | 面板增删改、切换当前面板、侧边栏开关 |
 | `bt_api` | 兜底：直接调用任意面板 API 动作 |
+
+除 `bt_panels` / `bt_config` 外，每个工具都接受 `panel` 参数选中目标面板。
 
 ## 安装
 
 1. 在 DSH 里打开 **插件 → 添加插件**，选择本仓库目录（或 `pnpm` 安装后选择包目录）。
-2. 打开 **设置 → 宝塔面板**，填面板地址和接口密钥，保存。
-3. 侧边栏出现「宝塔面板」入口；不想显示时把「显示到侧边栏」关掉即可（入口消失，工具照常可用）。
+2. 打开 **设置 → 宝塔面板**，点「添加面板」填地址与接口密钥，「设为当前」，保存。要多台面板就重复这一步。
+3. 侧边栏出现「宝塔面板」入口，看板右上角可切换面板；不想显示时把「显示到侧边栏」关掉即可（入口消失，工具照常可用）。
 
 也可以命令行安装：
 
@@ -70,10 +77,19 @@ git clone <this repo> dsh-baota-panel
 - id: dsh-baota-panel
   name: dsh-baota-panel
   config:
-    panelUrl: 'https://panel.example.com:4439'   # 面板根地址（含端口，不带安全入口）
-    apiKey: '你的接口密钥'                          # 面板设置 → API 接口 → 接口密钥
-    securityEntrance: ''                          # 可选，例如 ghostxx
-    verifyTls: false                              # 面板一般自签证书
+    panels:
+      - id: main
+        name: 主面板
+        panelUrl: 'https://panel.example.com:4439'   # 根地址含端口，不带安全入口
+        apiKey: '你的接口密钥'
+        securityEntrance: ''                          # 可选，例如 ghostxx
+        verifyTls: false                              # 面板一般自签证书
+      - id: backup
+        name: 备用面板
+        panelUrl: 'https://203.0.113.10:8888'
+        apiKey: '另一台的密钥'
+        verifyTls: false
+    activePanel: main
     showInSidebar: true
     requestTimeoutMs: 20000
 ```
