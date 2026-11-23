@@ -23,7 +23,23 @@ The sidebar entry registers into `sidebar.panellist` (id `baota`), the dashboard
 
 **Settings → Baota panel** — add, remove, edit and activate panels with **auto-save** (no save button: writes land 0.45s after typing stops or on blur); per-panel display name, address, API key (empty keeps the stored key), optional security entrance and certificate verification; plus the **show in sidebar** switch. The list is stored in the plugin's own state file `~/.dsh/baota-panel/state.json` (atomic write, no plugin restart), so edits apply without a page reload.
 
-**Agent tools** — `bt_panels`, `bt_system`, `bt_site` (list/start/stop/delete/logs), `bt_database`, `bt_file`, `bt_crontab`, `bt_firewall`, `bt_service`, `bt_logs`, `bt_config`, `bt_selftest` (diagnostic: drives the same Remote gateway path the UI uses), and `bt_api` for any panel action not covered. All but `bt_panels`/`bt_config` accept `panel`.
+**Agent tools** — every tool but `bt_panels`/`bt_config`/`bt_selftest` takes an optional `panel`.
+
+| Tool | Does |
+| --- | --- |
+| `bt_panels` | list configured panels |
+| `bt_system` | overview / disk / load / network / software stack / raw |
+| `bt_site` | list, **create**, start, stop, delete, access logs, **read/switch PHP version**, **list/add/remove domains**, **SSL status/close**, **force HTTPS on/off**, rewrite templates, **create backup**, list backups |
+| `bt_database` | list, **create**, delete, **reset password**, **create backup** |
+| `bt_ftp` | list, **create**, delete, **reset password**, enable/disable |
+| `bt_file` | list, read, write, mkdir, delete |
+| `bt_crontab` | list, **add**, delete |
+| `bt_service` | software stack, **restart/reload a service**, **reload the panel web service**, **free memory** |
+| `bt_logs` | panel operation log |
+| `bt_firewall` | rules (session-guarded on some builds) |
+| `bt_config` | panel list management, active panel, sidebar switch |
+| `bt_selftest` | diagnostic through the same Remote gateway path the UI uses |
+| `bt_api` | any panel API action not covered |
 
 ## Install
 
