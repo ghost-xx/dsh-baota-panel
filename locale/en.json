@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "Baota panel",
+    "description": "Drive a Baota (bt.cn) Linux panel with one API key: a sidebar panel for host status, sites, databases and services, plus agent tools that manage the panel.",
+    "detail": "docs/DETAIL.md"
+  }
+}

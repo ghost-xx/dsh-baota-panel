@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Baota panel">
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="#22304b"/>
+  <g fill="none" stroke="#f3c96b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32 11l13 6H19l13-6z"/>
+    <path d="M32 17l10 5H22l10-5z"/>
+    <path d="M24 22v6h16v-6"/>
+    <path d="M26 28l-3 5h18l-3-5"/>
+    <path d="M28 33v6h8v-6"/>
+    <path d="M31 39v8M33 39v8"/>
+    <path d="M22 47h20"/>
+    <path d="M19 51h26"/>
+  </g>
+  <g fill="#f3c96b">
+    <circle cx="32" cy="13.5" r="1.9"/>
+    <rect x="30.6" y="43" width="2.8" height="3.2" rx="0.8"/>
+  </g>
+</svg>

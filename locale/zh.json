@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "宝塔面板",
+    "description": "用一个接口密钥接管宝塔 Linux 面板：在侧边栏查看服务器状态、网站、数据库与服务，并让智能体直接管理面板。",
+    "detail": "docs/DETAIL.md"
+  }
+}
