@@ -30,10 +30,10 @@ The sidebar entry registers into `sidebar.panellist` (id `baota`), the dashboard
 | `bt_panels` | list configured panels |
 | `bt_system` | overview / disk / load / network / software stack / raw |
 | `bt_site` | list, **create**, start, stop, delete, access logs, **read/switch PHP version**, **list/add/remove domains**, **SSL status/close**, **force HTTPS on/off**, rewrite templates, **create backup**, list backups |
-| `bt_database` | list, **create**, delete, **reset password**, **create backup** |
+| `bt_database` | list, **create**, delete, **reset password**, **create/list backups**, **run status**, **MySQL users**, **error/slow log**, **access source** |
 | `bt_ftp` | list, **create**, delete, **reset password**, enable/disable |
-| `bt_file` | list, read, write, mkdir, delete |
-| `bt_crontab` | list, **add**, delete |
+| `bt_file` | list, read, write, mkdir, delete, **path size**, **permissions/owner** |
+| `bt_crontab` | list, **add**, delete, **inspect one**, **run logs** |
 | `bt_service` | software stack, **restart/reload a service**, **reload the panel web service**, **free memory** |
 | `bt_logs` | panel operation log |
 | `bt_firewall` | rules (session-guarded on some builds) |
