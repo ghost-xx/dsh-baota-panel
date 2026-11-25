@@ -10,7 +10,7 @@ A DSH bundle with two halves:
 
 | Half | Runs in | Does |
 | --- | --- | --- |
-| Host | DSH main process (Node) | Signs requests with `md5(request_time + md5(api_key))`, calls the Baota API, exposes 9 agent tools, and serves read-only data to the browser half through a typert Remote channel |
+| Host | DSH main process (Node) | Signs requests with `md5(request_time + md5(api_key))`, calls the Baota API, exposes 13 agent tools, and serves read-only data to the browser half through a typert Remote channel |
 | Client | DSH Web page (React) | Sidebar panel entry, status dashboard, and `Settings → Baota panel` (address, key, security entrance, show-in-sidebar switch) |
 
 The sidebar entry registers into `sidebar.panellist` (id `baota`), the dashboard into `main` (key `baota`), and the settings page into `settings.section` (id `baota`).

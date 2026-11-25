@@ -12,7 +12,7 @@ English | [English](README.en.md)
 
 | 半边 | 运行位置 | 做什么 |
 | --- | --- | --- |
-| Host | DSH 主进程（Node） | 用 `md5(request_time + md5(api_key))` 时间戳签名直连宝塔 API，对外提供 9 个智能体工具，并通过 typert Remote 把只读数据推给前端 |
+| Host | DSH 主进程（Node） | 用 `md5(request_time + md5(api_key))` 时间戳签名直连宝塔 API，对外提供 13 个智能体工具，并通过 typert Remote 把只读数据推给前端 |
 | Client | DSH Web 页面（React） | 侧边栏面板入口 + 状态看板 + `设置 → 宝塔面板`（面板地址、密钥、安全入口、是否显示到侧边栏） |
 
 侧边栏入口用 DSH 的 `sidebar.panellist` 插槽注册（id `baota`），中央面板用 `main` 插槽（key `baota`），设置页用 `settings.section`（id `baota`）。
